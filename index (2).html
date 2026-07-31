@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f8fafc" />
+    <meta name="description" content="Central de Suporte MHNet: escolha o assunto e fale com nosso time no WhatsApp em segundos." />
+    <meta property="og:title" content="MHNet • Central de Suporte" />
+    <meta property="og:description" content="Fale com o suporte MHNet no WhatsApp em segundos." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <title>MHNet • Central de Suporte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --background: #f8fafc;
+        --surface: #ffffff;
+        --foreground: #0f172a;
+        --muted: #64748b;
+        --border: #e2e8f0;
+        --brand: #0284c7;
+        --brand-soft: #e0f2fe;
+        --baby-blue: #7dd3fc;
+        --whatsapp: #25d366;
+        --whatsapp-dark: #128c7e;
+      }
+
+      * { box-sizing: border-box; }
+      html { background: var(--background); }
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--foreground);
+        background: var(--background);
+        font-family: "Inter", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      button, a { font: inherit; }
+      button { color: inherit; }
+      .app { width: 100%; max-width: 430px; min-height: 100vh; margin: 0 auto; padding-bottom: 40px; }
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 40px 20px 80px;
+        background: linear-gradient(180deg, var(--brand-soft), var(--background));
+      }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .brand img { display: block; width: 144px; height: auto; object-fit: contain; }
+      .brand-label { color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .35em; text-transform: uppercase; }
+      h1 { margin: 28px 0 0; font-size: 24px; line-height: 1.2; font-weight: 800; }
+      h1 span, .accent { color: var(--brand); }
+      .hero-copy { margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+      .content { position: relative; z-index: 1; margin-top: -56px; }
+      .section { padding: 0 20px; }
+      .status {
+        display: flex; align-items: center; gap: 12px; padding: 16px;
+        border: 1px solid var(--border); border-radius: 16px; background: rgba(255,255,255,.88);
+        box-shadow: 0 4px 18px rgba(15,23,42,.06); backdrop-filter: blur(14px);
+      }
+      .status-dot { position: relative; width: 10px; height: 10px; flex: 0 0 auto; border-radius: 50%; background: var(--baby-blue); }
+      .status-dot::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: inherit; animation: ping 1.8s ease-out infinite; }
+      .status-text { flex: 1; }
+      .status-text strong { display: block; font-size: 14px; }
+      .status-text small { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
+      .icon { width: 20px; height: 20px; color: var(--brand); stroke-width: 2; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+      .reason-section { margin-top: 32px; }
+      .section-heading { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
+      .section-heading h2 { margin: 0; font-size: 14px; font-weight: 600; }
+      .section-heading span { color: var(--muted); font-size: 11px; }
+      .reason-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+      .reason {
+        min-height: 132px; padding: 16px; text-align: left; cursor: pointer;
+        border: 1px solid var(--border); border-radius: 16px; background: var(--surface);
+        box-shadow: 0 2px 8px rgba(15,23,42,.04); transition: transform .18s, border-color .18s, background .18s;
+      }
+      .reason:hover { transform: translateY(-2px); border-color: var(--baby-blue); background: #f8fdff; }
+      .reason:active { transform: scale(.97); }
+      .icon-box { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-bottom: 12px; border: 1px solid var(--baby-blue); border-radius: 12px; background: var(--brand-soft); }
+      .icon-box .icon { width: 18px; height: 18px; }
+      .reason strong { display: block; font-size: 14px; }
+      .reason small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.35; }
+      .cta { margin-top: 40px; text-align: center; }
+      .cta h2 { margin: 0; font-size: 18px; font-weight: 800; }
+      .cta p { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+      .cta-button {
+        position: relative; display: flex; align-items: center; justify-content: center; gap: 9px;
+        width: 100%; margin-top: 20px; padding: 16px; overflow: hidden; cursor: pointer;
+        border: 0; border-radius: 24px; color: white; font-size: 16px; font-weight: 700;
+        background: linear-gradient(90deg,var(--whatsapp),var(--whatsapp-dark));
+        box-shadow: 0 14px 30px rgba(37,211,102,.28); transition: transform .16s;
+      }
+      .cta-button:hover { transform: translateY(-1px); }
+      .cta-button:active { transform: scale(.98); }
+      .cta-button svg { width: 21px; height: 21px; fill: currentColor; }
+      .response { margin-top: 12px !important; font-size: 11px !important; }
+      .channels { margin-top: 40px; }
+      .channels > h2 { margin: 0 0 12px; font-size: 14px; font-weight: 600; }
+      .channel-list { overflow: hidden; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); box-shadow: 0 2px 8px rgba(15,23,42,.04); }
+      .channel { display: flex; align-items: center; gap: 12px; padding: 16px; }
+      .channel + .channel { border-top: 1px solid var(--border); }
+      .channel .icon-box { flex: 0 0 auto; margin: 0; }
+      .channel-copy { min-width: 0; }
+      .channel-copy strong, .channel-copy small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .channel-copy strong { font-size: 14px; font-weight: 500; }
+      .channel-copy small { margin-top: 3px; color: var(--muted); font-size: 11px; }
+      footer { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 40px; padding: 0 20px; color: var(--muted); font-size: 11px; }
+      footer p { margin: 0; }
+      @keyframes ping { 75%,100% { transform: scale(2.3); opacity: 0; } }
+      @keyframes enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+      .enter { opacity: 0; animation: enter .5s ease forwards; }
+      @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; transition: none !important; } .enter { opacity: 1; } }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <div class="brand enter">
+          <img src="/__l5e/assets-v1/a8f30e1e-0a7a-465e-95c5-214dc9f5ec15/mhnet-logo-clean.png" alt="Logo MHNet Telecom" width="1136" height="164" />
+          <span class="brand-label">Soluções</span>
+        </div>
+        <h1 class="enter" style="animation-delay:.05s">Como podemos <span>ajudar</span>?</h1>
+        <p class="hero-copy enter" style="animation-delay:.1s">Escolha o assunto e fale com nosso time no WhatsApp em segundos.</p>
+      </header>
+
+      <div class="content">
+        <section class="section" aria-label="Status do atendimento">
+          <div class="status enter">
+            <span class="status-dot" aria-hidden="true"></span>
+            <div class="status-text"><strong>Atendimento Online</strong><small>Seg a Sáb • 08h às 20h</small></div>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M18 19c0 1.1-.9 2-2 2h-3"/><path d="M4 13v3a2 2 0 0 0 2 2h1v-7H6a2 2 0 0 0-2 2Z"/><path d="M20 13v3a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2Z"/></svg>
+          </div>
+        </section>
+
+        <section class="section reason-section">
+          <div class="section-heading"><h2>Motivo do contato</h2><span>via WhatsApp</span></div>
+          <div class="reason-grid" id="reasons"></div>
+        </section>
+
+        <section class="section cta">
+          <h2>Fale com o suporte <span class="accent">agora</span></h2>
+          <p>Atendimento rápido, humano e sem fila de espera.</p>
+          <button class="cta-button" type="button" data-message="Olá! Vim pela Central de Suporte da MHNet e gostaria de atendimento.">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.174.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 0 1 6.988 2.898 9.825 9.825 0 0 1 2.892 6.994c-.003 5.45-4.437 9.884-9.884 9.884M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893C23.94 5.343 18.605 0 12.05 0Z"/></svg>
+            Iniciar atendimento
+          </button>
+          <p class="response">Resposta em poucos minutos durante o horário de atendimento.</p>
+        </section>
+
+        <section class="section channels">
+          <h2>Outros canais</h2>
+          <div class="channel-list">
+            <div class="channel"><span class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92Z"/></svg></span><div class="channel-copy"><strong>(49) 3664-0000</strong><small>Canal de suporte</small></div></div>
+            <div class="channel"><span class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div class="channel-copy"><strong>contato@mhnet.com.br</strong><small>E-mail de suporte</small></div></div>
+            <div class="channel"><span class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div class="channel-copy"><strong>Av. Presidente Kennedy, 527 - Centro</strong><small>Maravilha - SC • CEP 89874-000</small></div></div>
+          </div>
+        </section>
+      </div>
+
+      <footer><p>© <span id="year"></span> MHNet</p><p>CNPJ 05.245.502/0001-04</p></footer>
+    </main>
+
+    <script>
+      const whatsapp = "554936640000";
+      const reasons = [
+        ["wifi", "Suporte Técnico", "Sem internet, lenta ou instável", "Olá! Estou com problemas na minha internet e preciso de suporte técnico."],
+        ["file", "Segunda via", "Fatura em aberto", "Olá! Gostaria de solicitar a segunda via da minha fatura."],
+        ["wallet", "Financeiro", "Negociação e pagamentos", "Olá! Preciso falar com o financeiro sobre negociação/pagamento."],
+        ["home", "Mudança", "Transferir endereço", "Olá! Gostaria de transferir minha internet para outro endereço."],
+        ["cancel", "Cancelamento", "Encerrar contrato", "Olá! Gostaria de informações sobre o cancelamento do meu contrato."],
+        ["up", "Upgrade", "Aumentar meu plano", "Olá! Gostaria de aumentar a velocidade do meu plano."],
+        ["headset", "Atendente", "Falar com uma pessoa", "Olá! Gostaria de falar com um atendente."],
+        ["help", "Outros", "Demais assuntos", "Olá! Preciso de ajuda com outro assunto."]
+      ];
+      const icons = {
+        wifi:'<path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M12 20h.01"/>',
+        file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/>',
+        wallet:'<path d="M20 7V6a2 2 0 0 0-2-2H5a3 3 0 0 0 0 6h15v10H5a3 3 0 0 1-3-3V7"/><path d="M16 15h.01"/>',
+        home:'<path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/>',
+        cancel:'<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6m0-6 6 6"/>',
+        up:'<circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4m4-4v8"/>',
+        headset:'<path d="M4 13a8 8 0 0 1 16 0v3a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2M4 13v3a2 2 0 0 0 2 2h1v-7H6a2 2 0 0 0-2 2M18 19c0 1.1-.9 2-2 2h-3"/>',
+        help:'<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4M12 18h.01"/>'
+      };
+      const openWhats = message => window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      document.getElementById("reasons").innerHTML = reasons.map((item,index) => `<button class="reason enter" style="animation-delay:${(index+1)*.05}s" type="button" data-message="${item[3]}"><span class="icon-box"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[item[0]]}</svg></span><strong>${item[1]}</strong><small>${item[2]}</small></button>`).join("");
+      document.querySelectorAll("[data-message]").forEach(button => button.addEventListener("click", () => openWhats(button.dataset.message)));
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
